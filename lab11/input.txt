@@ -1,0 +1,15 @@
+1 Minsk 12:34
+2 Moscov 23:34
+3 Minsk 21:15
+4 Minsk 01:24
+5 Moscov 11:37
+6 Minsk 20:55
+7 Minsk 14:14
+8 Moscov 01:01
+9 Minsk 22:22
+10 Minsk 23:23
+11 Moscov 13:37
+12 Minsk 14:35
+13 Minsk 10:40
+14 Moscov 23:59
+15 Minsk 07:18
