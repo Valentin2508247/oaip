@@ -2,43 +2,79 @@
 #include <stack>
 
 using namespace std;
+
+class Node {
+public:
+    double value;
+    Node* prev;
+};
+
+class Stack {
+public:
+    Node* head;
+    int size = 0;
+
+    Node* pop() {
+        if (size == 0)
+        {
+            return NULL;
+        }
+        Node* result = head;
+        head = head->prev;
+        size--;
+        return result;
+    }
+
+    void push(double value) {
+        if (size == 0) {
+            head = new Node();
+            head->value = value;
+        }
+        else {
+            Node* node = new Node();
+            node->value = value;
+            node->prev = head;
+            head = node;
+        }
+        size++;
+    }
+};
+
+
+
 int main()
 {
-    // init stack
-    stack<double>* st = new stack<double>();
-    stack<double>* st2 = new stack<double>();
-    st->push(-29);
-    st->push(1);
-    st->push(2);
-    st->push(3);
-    st->push(4);
-    st->push(5);
-    st->push(1);
-    st->push(-37);
-    st->push(1);
+    Stack* st = new Stack();
+    Stack* st2 = new Stack();
+    st->push(1.);
+    st->push(2.);
+    st->push(3.);
+    st->push(49.);
+
 
     // count average
-    double sum = 0, average, n = st->size();
+    double sum = 0, average, n = st->size;
     int count = 0;
-    while (!st->empty()) {
-        double value = st->top();
+    while (st->size > 0) {
+        Node* node = st->pop();
+        double value = node->value;
         sum += value;
-        st->pop();
         st2->push(value);
+        delete node;
     }
     average = sum / n;
 
     // count count
-    while (!st2->empty())
+    while (st2->size > 0)
     {
-        double value = st2->top();
-        st2->pop();
-        if (value < average)
+        Node* node = st2->pop();
+        if (node->value < average)
             count++;
+        delete node;
     }
     cout << "There're " << count << " element(s) less than average";
-
-    // delete stack
+    
+    // delete stacks
     delete st;
     delete st2;
 }
