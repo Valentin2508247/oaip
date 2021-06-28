@@ -3,14 +3,12 @@
 
 using namespace std;
 
-class Node {
-public:
+struct Node {
     double value;
     Node* prev;
 };
 
-class Stack {
-public:
+struct Stack {
     Node* head;
     int size = 0;
 
